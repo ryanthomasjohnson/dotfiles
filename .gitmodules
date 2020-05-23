@@ -1,3 +1,8 @@
-[submodule ".vim/pack/default/start/vim-polyglot"]
-	path = .vim/pack/default/start/vim-polyglot
+[submodule "home/.vim/pack/default/start/vim-polyglot"]
+	path = home/.vim/pack/default/start/vim-polyglot
 	url = https://github.com/sheerun/vim-polyglot
+	shallow = true
+[submodule "home/.vim/bundle/YouCompleteMe"]
+	path = home/.vim/bundle/YouCompleteMe
+	url = https://github.com/ycm-core/YouCompleteMe.git
+	shallow = true
