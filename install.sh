@@ -5,5 +5,5 @@ do
     ln -sf $(realpath home/$file) ~/$file
 done
 
-( cd home/.vim/bundle/YouCompleteMe && python install.py --clang-completer )
+# ( cd home/.vim/bundle/YouCompleteMe && python install.py --clang-completer )
 
