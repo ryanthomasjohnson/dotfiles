@@ -38,6 +38,3 @@ vnoremap <Up> <nop>
 " Set 80 char line
 set colorcolumn=80
 
-" Load YCM
-set rtp+=~/.vim/bundle/YouCompleteMe
-
