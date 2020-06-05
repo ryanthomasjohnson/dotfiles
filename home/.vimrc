@@ -1,7 +1,7 @@
 " Turn syntax highlighting on
 syntax on
 " # of spaces when tab is entered
-set tabstop=4
+set tabstop=4 softtabstop=4
 " Replace tabs with spaces
 set expandtab
 " # of spaces for indentation
@@ -18,23 +18,26 @@ set number
 set number relativenumber
 " Highlight all search matches
 set hlsearch
-" Turn off arrow keys
-cnoremap <Down> <nop>
-cnoremap <Left> <nop>
-cnoremap <Right> <nop>
-cnoremap <Up> <nop>
-inoremap <Down> <nop>
-inoremap <Left> <nop>
-inoremap <Right> <nop>
-inoremap <Up> <nop>
-nnoremap <Down> <nop>
-nnoremap <Left> <nop>
-nnoremap <Right> <nop>
-nnoremap <Up> <nop>
-vnoremap <Down> <nop>
-vnoremap <Left> <nop>
-vnoremap <Right> <nop>
-vnoremap <Up> <nop>
 " Set 80 char line
 set colorcolumn=80
+" Search recursively into subfolders
+set path+=**
+" Tab complete for matching files
+set wildmenu
+" Command to delete the current buffer without modifying panes
+command Bd bp|bd #
+" Turn off bells
+set noerrorbells
+set belloff=all
+set vb t_vb=
+" Auto-indent
+set smartindent
+" Turn off line wrapping
+set nowrap
+" Smart case-sensitive searching
+set smartcase
+" Incremental search
+set incsearch
+" Remove netrw banner
+let g:netrw_banner = 0
 

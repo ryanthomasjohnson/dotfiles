@@ -8,4 +8,5 @@ set -o vi
 
 # ALIASES
 alias bell="echo -ne '\a'"
+alias weather="curl wttr.in"
 
