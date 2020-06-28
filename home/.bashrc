@@ -7,6 +7,8 @@ export PS1="$ "
 set -o vi
 # Save history and reload on every prompt
 export PROMPT_COMMAND="history -a; history -n"
+# Set timezone
+TZ="US/Eastern"
 
 # ALIASES
 alias bell="echo -ne '\a'"
