@@ -19,11 +19,13 @@ set number relativenumber
 " Highlight all search matches
 set hlsearch
 " Set 80 char line
-set colorcolumn=80
+set colorcolumn=81
 " Search recursively into subfolders
 set path+=**
 " Tab complete for matching files
 set wildmenu
+" Ignore files/directories when greping and finding
+set wildignore+=*.o,**/build/**
 " Command to delete the current buffer without modifying panes
 command Bd bp|bd #
 " Turn off bells
