@@ -3,8 +3,8 @@
 
 # Set terminal
 export TERM='screen-256color'
-
-
+# Turn on `ls` colors for MacOS
+export CLICOLOR=1
 # Set terminal prompt
 export PS1="$ "
 # Set vi(m) mode at prompt
@@ -13,6 +13,8 @@ set -o vi
 export PROMPT_COMMAND="history -a; history -n"
 # Set timezone
 TZ="US/Eastern"
+# Ignore bash deprecation for zsh on MacOS
+export BASH_SILENCE_DEPRECATION_WARNING=1
 
 # ALIASES
 alias bell="echo -ne '\a'"
@@ -22,3 +24,4 @@ for i in {0..255}; do
     printf "\x1b[38;5;${i}mcolour${i}\x1b[0m\n"
 done
 '
+
