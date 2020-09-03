@@ -9,8 +9,9 @@ export CLICOLOR=1
 export PS1="$ "
 # Set vi(m) mode at prompt
 set -o vi
-# Save history and reload on every prompt
-export PROMPT_COMMAND="history -a; history -n"
+# Save history on every prompt
+shopt -s histappend
+export PROMPT_COMMAND='history -a'
 # Set timezone
 TZ="US/Eastern"
 # Ignore bash deprecation for zsh on MacOS
