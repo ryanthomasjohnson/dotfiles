@@ -1,5 +1,6 @@
 " Turn syntax highlighting on
 syntax on
+colorscheme noctu
 " # of spaces when tab is entered
 set tabstop=4 softtabstop=4
 " Replace tabs with spaces
@@ -42,4 +43,6 @@ set smartcase
 set incsearch
 " Remove netrw banner
 let g:netrw_banner = 0
+" Load .vimrc from current directory (if there is one)
+set exrc
 

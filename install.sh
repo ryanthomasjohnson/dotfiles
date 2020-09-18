@@ -5,5 +5,8 @@ do
     ln -sf $(realpath home/$file) ~/$file
 done
 
-# ( cd home/.vim/bundle/YouCompleteMe && python install.py --clang-completer )
-
+mkdir -p ~/.config
+for entry in $(ls -A config)
+do
+    ln -sf $(realpath config/$entry) ~/.config/$entry
+done
