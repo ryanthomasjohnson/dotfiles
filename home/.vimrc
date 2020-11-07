@@ -26,7 +26,7 @@ set path+=**
 " Tab complete for matching files
 set wildmenu
 " Ignore files/directories when greping and finding
-set wildignore+=*.o,**/build/**
+set wildignore+=*.o,**/build/**,**/__pycache__/**,**/venv/**
 " Command to delete the current buffer without modifying panes
 command Bd bp|bd #
 " Turn off bells
@@ -45,4 +45,5 @@ set incsearch
 let g:netrw_banner = 0
 " Load .vimrc from current directory (if there is one)
 set exrc
-
+" Allow backspace
+set backspace=indent,eol,start
