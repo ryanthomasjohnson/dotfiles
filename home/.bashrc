@@ -27,4 +27,4 @@ done
 '
 alias vim="nvim"
 alias vi="nvim"
-
+alias pass='lpass show -cp'
