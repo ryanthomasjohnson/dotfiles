@@ -11,4 +11,4 @@ do
     ln -sf $(realpath config/$entry) ~/.config/$entry
 done
 vim +PlugInstall +qall
-vim +'CocInstall coc-clangd' +qall
+vim +'CocInstall -sync coc-clangd' +qall
