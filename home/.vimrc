@@ -13,6 +13,9 @@ set showmatch
 set ruler
 " Speed up scrolling
 set ttyfast
+" Reduce time after entering certain commands
+set timeoutlen=1000
+set ttimeoutlen=5
 " Show line numbers
 set number
 " Show relative line numbers
@@ -28,7 +31,7 @@ set wildmenu
 " Ignore files/directories when greping and finding
 set wildignore+=*.o,**/build/**,**/__pycache__/**,**/venv/**
 " Command to delete the current buffer without modifying panes
-command Bd bp|bd #
+command! Bd bp|bd #
 " Turn off bells
 set noerrorbells
 set belloff=all
@@ -47,3 +50,27 @@ let g:netrw_banner = 0
 set exrc
 " Allow backspace
 set backspace=indent,eol,start
+
+" Plugins
+call plug#begin()
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+call plug#end()
+
+" Coc Configuration
+" Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocActionAsync('doHover')
+  endif
+endfunction
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gv :vsplit<CR><Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
