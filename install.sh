@@ -12,3 +12,4 @@ do
 done
 vim +PlugInstall +qall
 vim +'CocInstall -sync coc-clangd' +qall
+vim +'CocInstall -sync coc-python' +qall
