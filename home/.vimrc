@@ -29,7 +29,7 @@ set path+=**
 " Tab complete for matching files
 set wildmenu
 " Ignore files/directories when greping and finding
-set wildignore+=*.o,**/build/**,**/__pycache__/**,**/venv/**
+set wildignore+=*.o,**/build/**,**/__pycache__/**,**/venv/**,**/env/**
 " Command to delete the current buffer without modifying panes
 command! Bd bp|bd #
 " Turn off bells
@@ -41,6 +41,7 @@ set smartindent
 " Turn off line wrapping
 set nowrap
 " Smart case-sensitive searching
+set ignorecase
 set smartcase
 " Incremental search
 set incsearch
@@ -50,6 +51,8 @@ let g:netrw_banner = 0
 set exrc
 " Allow backspace
 set backspace=indent,eol,start
+" Auto-reload file from disk if unmodified
+set autoread
 
 " Plugins
 call plug#begin()

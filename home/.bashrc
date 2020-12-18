@@ -16,6 +16,9 @@ export PROMPT_COMMAND='history -a'
 TZ="US/Eastern"
 # Ignore bash deprecation for zsh on MacOS
 export BASH_SILENCE_DEPRECATION_WARNING=1
+# Set editor
+export EDITOR=$(which vi)
+export VISUAL=$(which nvim || which vim || which vi)
 
 # ALIASES
 alias bell="echo -ne '\a'"
@@ -28,3 +31,5 @@ done
 alias vim="nvim"
 alias vi="nvim"
 alias pass='lpass show -cp'
+alias notes="${HOME}/scripts/notes.sh"
+alias display='export DISPLAY=$(tmux show-env | sed -n "s/^DISPLAY=//p")'
