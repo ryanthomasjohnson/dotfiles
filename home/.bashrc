@@ -33,3 +33,4 @@ alias vi="nvim"
 alias pass='lpass show -cp'
 alias notes="${HOME}/scripts/notes.sh"
 alias display='export DISPLAY=$(tmux show-env | sed -n "s/^DISPLAY=//p")'
+alias ls='ls --color=auto'
