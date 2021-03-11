@@ -9,7 +9,6 @@ stow \
     tmux \
     vim \
 ;
-source ~/.bashrc
-vim +PlugInstall +qall
-vim +'CocInstall -sync coc-clangd' +qall
-vim +'CocInstall -sync coc-python' +qall
+nvim +PlugInstall +qall
+nvim +'CocInstall -sync coc-clangd' +qall
+nvim +'CocInstall -sync coc-python' +qall
