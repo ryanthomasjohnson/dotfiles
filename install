@@ -1,0 +1,15 @@
+#!/usr/bin/sh
+set -x
+git submodule update --init --recursive --depth 1
+stow \
+    alacritty \
+    bash \
+    neovim \
+    readline \
+    tmux \
+    vim \
+;
+source ~/.bashrc
+vim +PlugInstall +qall
+vim +'CocInstall -sync coc-clangd' +qall
+vim +'CocInstall -sync coc-python' +qall
