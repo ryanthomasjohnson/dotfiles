@@ -20,7 +20,7 @@ hi Normal              ctermfg=7
 hi Cursor              ctermfg=7     ctermbg=1
 hi CursorLine          ctermbg=0     cterm=NONE
 hi MatchParen          ctermfg=7     ctermbg=NONE  cterm=underline
-hi Pmenu               ctermfg=15    ctermbg=0
+hi Pmenu               ctermfg=7     ctermbg=16
 hi PmenuThumb          ctermbg=7
 hi PmenuSBar           ctermbg=8
 hi PmenuSel            ctermfg=0     ctermbg=4
@@ -35,9 +35,9 @@ hi CursorLineNr        ctermfg=11    ctermbg=0
 hi Visual              ctermfg=0     ctermbg=3
 hi IncSearch           ctermfg=0     ctermbg=13    cterm=NONE
 hi Search              ctermfg=0     ctermbg=10
-hi StatusLine          ctermfg=7     ctermbg=0     cterm=bold
-hi StatusLineNC        ctermfg=8     ctermbg=0     cterm=bold
-hi VertSplit           ctermfg=0     ctermbg=0     cterm=NONE
+hi StatusLine          ctermfg=0     ctermbg=6     cterm=bold
+hi StatusLineNC        ctermfg=0     ctermbg=3     cterm=bold
+hi VertSplit           ctermfg=6     ctermbg=0     cterm=NONE
 hi TabLine             ctermfg=8     ctermbg=0     cterm=NONE
 hi TabLineSel          ctermfg=7     ctermbg=0
 hi Folded              ctermfg=6     ctermbg=0     cterm=bold
