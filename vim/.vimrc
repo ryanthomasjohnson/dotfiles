@@ -62,6 +62,7 @@ tnoremap <C-w>l <C-\><C-n><C-w>l
 " Plugins
 call plug#begin()
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'sheerun/vim-polyglot'
 call plug#end()
 
 " Coc Configuration
