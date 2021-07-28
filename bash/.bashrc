@@ -26,12 +26,14 @@ export HISTCONTROL='ignorespace:ignoredups'
 # Append history
 export PROMPT_COMMAND='history -a'
 # Set timezone
-export TZ='US/Eastern'
+export TZ='US/Pacific'
 # Ignore bash deprecation for zsh on MacOS
 export BASH_SILENCE_DEPRECATION_WARNING=1
 # Set editor
 export EDITOR=$(which vi)
 export VISUAL=$(which nvim || which vim || which vi)
+# Prevent ^S from stopping the current process (^Q to resume)
+stty stop undef
 # [ Aliases ]
 alias bell="echo -ne '\a'"
 alias weather="curl wttr.in"

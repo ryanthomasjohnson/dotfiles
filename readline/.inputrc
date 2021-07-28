@@ -2,16 +2,17 @@ set colored-completion-prefix on
 set enable-bracketed-paste on
 set editing-mode vi
 
-$if mode=vi
-set keymap vi-command
-# these are for vi-command mode
+"\C-r": reverse-search-history
+"\C-s": forward-search-history
 Control-l: clear-screen
 "\C-x\C-e": edit-and-execute-command
 "\C-x\C-r": re-read-init-file
 
+$if mode=vi
+set keymap vi-command
+# vi-command mode keymaps
+
 set keymap vi-insert
-# these are for vi-insert mode
-Control-l: clear-screen 
-"\C-x\C-e": edit-and-execute-command
-"\C-x\C-r": re-read-init-file
+# vi-insert mode keymaps
+
 $endif
