@@ -4,7 +4,7 @@ export PATH="$HOME/.local/bin:$PATH"
 # If not interactive, return
 [[ $- != *i* ]] && return
 
-# Include custom bashrc configuration
+# Include custom bash configuration
 [ -f ~/.bashrc.before ] && source ~/.bashrc.before
 
 # Set terminal
@@ -42,12 +42,12 @@ for i in {0..255}; do
     printf "\x1b[38;5;${i}mcolour${i}\x1b[0m\n"
 done
 '
-alias vim="nvim"
-alias vi="nvim"
 alias pass='lpass show -cp'
 alias notes="${HOME}/scripts/notes.sh"
 alias display='export DISPLAY=$(tmux show-env | sed -n "s/^DISPLAY=//p")'
 alias ls='ls --color=auto'
 
-# Include custom bashrc configuration
+# Include custom bash configuration
 [ -f ~/.bashrc.after ] && source ~/.bashrc.after
+# Include fzf bash configuration
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
