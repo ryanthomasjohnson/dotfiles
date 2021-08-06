@@ -10,5 +10,3 @@ stow \
     vim \
 ;
 nvim +PlugInstall +qall
-nvim +'CocInstall -sync coc-clangd' +qall
-nvim +'CocInstall -sync coc-python' +qall
