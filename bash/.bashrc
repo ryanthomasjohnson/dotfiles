@@ -30,8 +30,8 @@ export TZ='US/Pacific'
 # Ignore bash deprecation for zsh on MacOS
 export BASH_SILENCE_DEPRECATION_WARNING=1
 # Set editor
-export EDITOR=$(which vi)
-export VISUAL=$(which nvim || which vim || which vi)
+export EDITOR=vim
+export VISUAL=vim
 # Prevent ^S from stopping the current process (^Q to resume)
 stty stop undef
 # [ Aliases ]
