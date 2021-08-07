@@ -7,6 +7,8 @@ set editing-mode vi
 Control-l: clear-screen
 "\C-x\C-e": edit-and-execute-command
 "\C-x\C-r": re-read-init-file
+# Add trailing slash to symlinked directories when tab-completing.
+set mark-symlinked-directories on
 
 $if mode=vi
 set keymap vi-command

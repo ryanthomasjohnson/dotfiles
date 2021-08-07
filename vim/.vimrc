@@ -58,8 +58,13 @@ tnoremap <C-w>h <C-\><C-n><C-w>h
 tnoremap <C-w>j <C-\><C-n><C-w>j
 tnoremap <C-w>k <C-\><C-n><C-w>k
 tnoremap <C-w>l <C-\><C-n><C-w>l
+" Disable warning on existing swap file
+set shortmess=A
+" Auto-copy to clipboard when yanking to the + register
+autocmd TextYankPost * if v:event.operator is 'y' && v:event.regname is '+' | OSCYankReg + | endif
 
 " Plugins
 call plug#begin()
 Plug 'sheerun/vim-polyglot'
+Plug 'ojroques/vim-oscyank'
 call plug#end()

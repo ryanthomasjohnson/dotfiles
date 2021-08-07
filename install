@@ -1,5 +1,5 @@
 #!/bin/sh
-set -x
+set -ex
 stow \
     alacritty \
     bash \
@@ -7,5 +7,6 @@ stow \
     readline \
     tmux \
     vim \
+    scripts \
 ;
 nvim +PlugInstall +qall
