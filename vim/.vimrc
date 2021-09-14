@@ -29,7 +29,7 @@ set path+=**
 " Tab complete for matching files
 set wildmenu
 " Ignore files/directories when greping and finding
-set wildignore+=*.o,**/build/**,**/__pycache__/**,**/venv/**,**/env/**
+set wildignore+=*.o,**/__pycache__/**,**/venv/**,**/env/**
 " Command to delete the current buffer without modifying panes
 command! Bd bp|bd #
 " Turn off bells
@@ -58,13 +58,18 @@ tnoremap <C-w>h <C-\><C-n><C-w>h
 tnoremap <C-w>j <C-\><C-n><C-w>j
 tnoremap <C-w>k <C-\><C-n><C-w>k
 tnoremap <C-w>l <C-\><C-n><C-w>l
-" Disable warning on existing swap file
-set shortmess=A
+" Disable warning on existing swap file (A)
+" Disable <ENTER> prompt for quickfix navigation
+set shortmess=AO
 " Auto-copy to clipboard when yanking to the + register
 autocmd TextYankPost * if v:event.operator is 'y' && v:event.regname is '+' | OSCYankReg + | endif
+" Open splits below and to the right
+set splitbelow
+set splitright
 
 " Plugins
 call plug#begin()
 Plug 'sheerun/vim-polyglot'
 Plug 'ojroques/vim-oscyank'
+Plug 'neovim/nvim-lspconfig'
 call plug#end()

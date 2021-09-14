@@ -23,7 +23,7 @@ export HISTFILESIZE=-1
 export HISTSIZE=1000000
 # Ignore commands starting with spaces and consecutive duplicate commands
 export HISTCONTROL='ignorespace:ignoredups'
-# Append history
+# Append history on every command
 export PROMPT_COMMAND='history -a'
 # Set timezone
 export TZ='US/Pacific'
@@ -43,7 +43,6 @@ for i in {0..255}; do
 done
 '
 alias pass='lpass show -cp'
-alias notes="${HOME}/scripts/notes.sh"
 alias display='export DISPLAY=$(tmux show-env | sed -n "s/^DISPLAY=//p")'
 alias ls='ls --color=auto'
 
