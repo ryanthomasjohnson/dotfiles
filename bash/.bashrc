@@ -1,6 +1,5 @@
 # Path
-export PATH="$HOME/.local/bin:$PATH"
-
+export PATH="$HOME/.local/bin:/usr/local/bin:$PATH"
 # If not interactive, return
 [[ $- != *i* ]] && return
 
