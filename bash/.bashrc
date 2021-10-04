@@ -4,6 +4,7 @@
 # Include custom bashrc configuration
 [ -f ~/.bashrc.before ] && source ~/.bashrc.before
 
+export PATH=$HOME/.local/bin:$PATH
 # Set terminal
 # export TERM='screen-256color'
 # Turn on `ls` colors for MacOS
@@ -43,6 +44,7 @@ alias pass='lpass show -cp'
 alias notes="${HOME}/scripts/notes.sh"
 alias display='export DISPLAY=$(tmux show-env | sed -n "s/^DISPLAY=//p")'
 alias ls='ls --color=auto'
+export LESS="$LESS -Q -R"
 
 # Include custom bashrc configuration
 [ -f ~/.bashrc.after ] && source ~/.bashrc.after
