@@ -1,3 +1,4 @@
 .DS_Store
 **/.netrwhist
 vim/.vim/plugged/
+/neovim/.config/nvim/coc-settings.json

@@ -3,12 +3,19 @@ set enable-bracketed-paste on
 set editing-mode vi
 set bell-style none
 
+"\C-r": reverse-search-history
+"\C-s": forward-search-history
+Control-l: clear-screen
+"\C-x\C-e": edit-and-execute-command
+"\C-x\C-r": re-read-init-file
+# Add trailing slash to symlinked directories when tab-completing.
+set mark-symlinked-directories on
+
 $if mode=vi
 set keymap vi-command
-# these are for vi-command mode
-Control-l: clear-screen
+# vi-command mode keymaps
 
 set keymap vi-insert
-# these are for vi-insert mode
-Control-l: clear-screen 
+# vi-insert mode keymaps
+
 $endif

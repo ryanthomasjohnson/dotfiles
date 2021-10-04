@@ -1,7 +1,9 @@
+# Path
+export PATH="$HOME/.local/bin:/usr/local/bin:$PATH"
 # If not interactive, return
 [[ $- != *i* ]] && return
 
-# Include custom bashrc configuration
+# Include custom bash configuration
 [ -f ~/.bashrc.before ] && source ~/.bashrc.before
 
 export PATH=$HOME/.local/bin:$PATH
@@ -21,15 +23,17 @@ export HISTFILESIZE=-1
 export HISTSIZE=1000000
 # Ignore commands starting with spaces and consecutive duplicate commands
 export HISTCONTROL='ignorespace:ignoredups'
-# Append history
+# Append history on every command
 export PROMPT_COMMAND='history -a'
 # Set timezone
-export TZ='US/Eastern'
+export TZ='US/Pacific'
 # Ignore bash deprecation for zsh on MacOS
 export BASH_SILENCE_DEPRECATION_WARNING=1
 # Set editor
-export EDITOR=$(which vi)
-export VISUAL=$(which nvim || which vim || which vi)
+export EDITOR=vim
+export VISUAL=vim
+# Prevent ^S from stopping the current process (^Q to resume)
+stty stop undef
 # [ Aliases ]
 alias bell="echo -ne '\a'"
 alias weather="curl wttr.in"
@@ -38,13 +42,12 @@ for i in {0..255}; do
     printf "\x1b[38;5;${i}mcolour${i}\x1b[0m\n"
 done
 '
-alias vim="nvim"
-alias vi="nvim"
 alias pass='lpass show -cp'
-alias notes="${HOME}/scripts/notes.sh"
 alias display='export DISPLAY=$(tmux show-env | sed -n "s/^DISPLAY=//p")'
 alias ls='ls --color=auto'
 export LESS="$LESS -Q -R"
 
-# Include custom bashrc configuration
+# Include custom bash configuration
 [ -f ~/.bashrc.after ] && source ~/.bashrc.after
+# Include fzf bash configuration
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

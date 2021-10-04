@@ -1,6 +1,5 @@
 #!/bin/sh
-set -x
-git submodule update --init --recursive --depth 1
+set -ex
 stow \
     alacritty \
     bash \
@@ -8,7 +7,6 @@ stow \
     readline \
     tmux \
     vim \
+    scripts \
 ;
 nvim +PlugInstall +qall
-nvim +'CocInstall -sync coc-clangd' +qall
-nvim +'CocInstall -sync coc-python' +qall
