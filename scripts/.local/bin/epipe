@@ -1,0 +1,9 @@
+#!/bin/bash
+
+tmp="$(mktemp)"
+trap 'rm -rf "$tmp"' EXIT
+
+ARGS=( "$@" )
+cat > "$tmp"
+$EDITOR "${ARGS[@]:1}" "$tmp" < /dev/tty > /dev/tty
+cat "$tmp"
