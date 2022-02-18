@@ -8,6 +8,10 @@ set bell-style none
 Control-l: clear-screen
 "\C-x\C-e": edit-and-execute-command
 "\C-x\C-r": re-read-init-file
+# Cycle forward
+Control-k: menu-complete
+# Cycle backward
+Control-j: menu-complete-backward
 # Add trailing slash to symlinked directories when tab-completing.
 set mark-symlinked-directories on
 

@@ -35,7 +35,6 @@ export VISUAL=vim
 # Prevent ^S from stopping the current process (^Q to resume)
 stty stop undef
 # [ Aliases ]
-alias bell="echo -ne '\a'"
 alias weather="curl wttr.in"
 alias color='
 for i in {0..255}; do

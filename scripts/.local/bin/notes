@@ -1,0 +1,111 @@
+#!/bin/bash
+set -euo pipefail
+
+search()
+{
+    list | xargs -d $'\n' grep "$@"
+}
+
+open()
+{
+    file="$1"
+    $EDITOR "$file"
+}
+
+today_dir()
+{
+    echo "$NOTES_DIR/$(date +%Y/%m/%d)"
+}
+
+today()
+{
+    list "$(today_dir)"
+}
+
+create()
+{
+    name="${1-}"
+    [ -z "$name" ] && read -p 'Filename: ' name
+    path="$(today_dir)/$name"
+    mkdir -p "$(dirname "$path")"
+    touch "$path"
+    open "$path"
+}
+
+list()
+{
+    dir="${1:-$NOTES_DIR}"
+    find "$dir" -type f
+}
+
+directory()
+{
+    echo "$NOTES_DIR"
+}
+
+pick()
+{
+    PS3='Select file: '
+    if [ "$#" = 1 ]
+    then
+        choice="$1"
+    else
+        select choice in "${@}"
+        do
+            [ -n "$choice" ] && break
+        done
+    fi
+    echo "$choice"
+}
+
+find_()
+{
+    needle="$1"
+    if [ -f "$(today_dir)/$needle" ]
+    then
+        file="$(today_dir)/$needle"
+    else
+        readarray -td '' matches < <(find "$NOTES_DIR" -type f -iname "$needle" -print0)
+        if [ "${#matches[@]}" = 0 ]
+        then
+            if [[ "$needle" != *'*'* ]]
+            then
+                find_ "*$needle*"
+                return 0
+            else
+                echo "No notes found that match ${needle}." >&2
+                return 1
+            fi
+        fi
+        file="$(pick "${matches[@]}")"
+    fi
+    open "$file"
+}
+
+command="${1:-create}"
+NOTES_DIR=~/.local/share/notes
+mkdir -p "$NOTES_DIR"
+
+case $command in
+    "create" | "new")
+        create "${@:2}"
+        ;;
+    "ls" | "list")
+        list
+        ;;
+    "dir" | "directory")
+        directory
+        ;;
+    "search" | "grep")
+        search "${@:2}"
+        ;;
+    "find")
+        find_ "${@:2}"
+        ;;
+    "today")
+        today
+        ;;
+    *)
+        find_ "${@:1}"
+        ;;
+esac
