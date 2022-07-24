@@ -83,7 +83,7 @@ find_()
 }
 
 command="${1:-create}"
-NOTES_DIR=~/.local/share/notes
+NOTES_DIR="${NOTES_DIR:-"$(realpath ~/.local/share/notes)"}"
 mkdir -p "$NOTES_DIR"
 
 case $command in
