@@ -1,4 +1,5 @@
 #!/bin/sh
+set -euo pipefail
 
 tmp_dir="$(mktemp -d)"
 cd "$tmp_dir"

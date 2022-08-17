@@ -6,10 +6,34 @@ search()
     list | xargs -d $'\n' grep "$@"
 }
 
-open()
+edit()
 {
     file="$1"
     $EDITOR "$file"
+}
+
+open()
+{
+    needle="$1"
+    if [ -f "$(today_dir)/$needle" ]
+    then
+        file="$(today_dir)/$needle"
+    else
+        readarray -td $'\n' matches < <(find_ "$1")
+        if [ "${#matches[@]}" = 0 ]
+        then
+            echo "No notes found that match ${needle}." >&2
+            return 1
+        else 
+            if [ "${#matches[@]}" = 1 ]
+            then
+                file="${matches[0]}"
+            else
+                file="$(pick "${matches[@]}")"
+            fi
+        fi
+    fi
+    edit "$file"
 }
 
 today_dir()
@@ -22,14 +46,21 @@ today()
     list "$(today_dir)"
 }
 
-create()
+touch_()
 {
     name="${1-}"
     [ -z "$name" ] && read -p 'Filename: ' name
     path="$(today_dir)/$name"
     mkdir -p "$(dirname "$path")"
     touch "$path"
-    open "$path"
+    echo "$path"
+}
+
+create()
+{
+    name="${1-}"
+    path="$(touch_ "$name")"
+    edit "$path"
 }
 
 list()
@@ -61,25 +92,16 @@ pick()
 find_()
 {
     needle="$1"
-    if [ -f "$(today_dir)/$needle" ]
+    readarray -td '' matches < <(find "$NOTES_DIR" -type f -iname "$needle" -print0)
+    if [ "${#matches[@]}" = 0 ]
     then
-        file="$(today_dir)/$needle"
-    else
-        readarray -td '' matches < <(find "$NOTES_DIR" -type f -iname "$needle" -print0)
-        if [ "${#matches[@]}" = 0 ]
+        if [[ "$needle" != *'*'* ]]
         then
-            if [[ "$needle" != *'*'* ]]
-            then
-                find_ "*$needle*"
-                return 0
-            else
-                echo "No notes found that match ${needle}." >&2
-                return 1
-            fi
+            find_ "*$needle*"
         fi
-        file="$(pick "${matches[@]}")"
+    else
+        IFS=$'\n'; echo "${matches[*]}"
     fi
-    open "$file"
 }
 
 command="${1:-create}"
@@ -89,6 +111,12 @@ mkdir -p "$NOTES_DIR"
 case $command in
     "create" | "new")
         create "${@:2}"
+        ;;
+    "edit")
+        edit "${@:2}"
+        ;;
+    "touch")
+        touch_ "${@:2}"
         ;;
     "ls" | "list")
         list
@@ -102,10 +130,13 @@ case $command in
     "find")
         find_ "${@:2}"
         ;;
+    "open")
+        open "${@:2}"
+        ;;
     "today")
         today
         ;;
     *)
-        find_ "${@:1}"
+        open "${@:1}"
         ;;
 esac

@@ -34,6 +34,8 @@ export EDITOR=vim
 export VISUAL=vim
 # Prevent ^S from stopping the current process (^Q to resume)
 stty stop undef
+# Turn on ** support
+shopt -s globstar
 # [ Aliases ]
 alias weather="curl wttr.in"
 alias color='

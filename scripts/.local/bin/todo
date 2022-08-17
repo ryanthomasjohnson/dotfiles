@@ -1,0 +1,7 @@
+last="$(notes find TODO | sort -r | head -n 1)"
+new="$(notes touch TODO)"
+if [ "$last" != "$new" -a -f "$last" ]
+then
+    grep -Evi '^\[X\]' "$last" > "$new"
+fi
+notes edit "$new"

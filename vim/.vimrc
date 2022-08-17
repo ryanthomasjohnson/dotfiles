@@ -66,6 +66,10 @@ autocmd TextYankPost * if v:event.operator is 'y' && v:event.regname is '+' | OS
 " Open splits below and to the right
 set splitbelow
 set splitright
+" Auto-reload file if it is changed
+set autoread
+" Auto-reload on window focus
+au FocusGained,BufEnter * :checktime
 
 " Plugins
 call plug#begin()
@@ -76,8 +80,8 @@ call plug#end()
 
 " LSP Config
 lua << EOF
-local lspconfig = require('lspconfig')
-local util = require('lspconfig.util')
+-- local lspconfig = require('lspconfig')
+-- local util = require('lspconfig.util')
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
@@ -140,12 +144,12 @@ end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-lspconfig.pylsp.setup {
-    cmd = { "pyls-language-server" },
-    filetypes = { "python" },
-    on_attach = on_attach,
-    root_dir = root_dir,
-}
+-- lspconfig.pylsp.setup {
+--     cmd = { "pyls-language-server" },
+--     filetypes = { "python" },
+--     on_attach = on_attach,
+--     root_dir = root_dir,
+-- }
 -- lspconfig.rust_analyzer.setup {
 --     cmd = { "rust-analyzer" },
 --     filetypes = { "rust" },
@@ -165,3 +169,4 @@ EOF
 set shellpipe=\|\ tee
 " Command to fold lines at 80 characters
 command! -range=% Fold <line1>,<line2>!tr '\n' ' ' | sed 's/ \{2,\}/ /g' | fold -s
+command Changed :cex system('changedfiles')
