@@ -1,0 +1,79 @@
+[bell.command]
+args = ["-e", "beep"]
+program = "osascript"
+
+[colors.bright]
+black = "#75715e"
+blue = "#ae81ff"
+cyan = "#66d9ef"
+green = "#a6e22e"
+magenta = "#f92a72"
+red = "#f92a72"
+white = "#f8f8f2"
+yellow = "#e6db74"
+
+[colors.normal]
+black = "#222222"
+blue = "#ae81ff"
+cyan = "#66d9ef"
+green = "#a6e22e"
+magenta = "#f92a72"
+red = "#f92a72"
+white = "#cfcfc2"
+yellow = "#fd971f"
+
+[colors.primary]
+background = "#222222"
+foreground = "#cfcfc2"
+
+[env]
+TERM = "xterm-256color"
+
+[font]
+size = 14.5
+
+[font.bold]
+style = "Bold"
+
+[font.italic]
+style = "Italic"
+
+[font.normal]
+family = "Inconsolata"
+style = "Regular"
+
+[[keyboard.bindings]]
+chars = "\u001Bj"
+key = "J"
+mods = "Alt"
+
+[[keyboard.bindings]]
+chars = "\u001Bk"
+key = "K"
+mods = "Alt"
+
+[[keyboard.bindings]]
+chars = "\u001Bh"
+key = "H"
+mods = "Alt"
+
+[[keyboard.bindings]]
+chars = "\u001Bl"
+key = "L"
+mods = "Alt"
+
+[[keyboard.bindings]]
+key = "0"
+mods = "Command"
+
+[keyboard.bindings.command]
+args = ["msg", "config", "font.size=14.5"]
+program = "/usr/local/bin/alacritty"
+
+[[keyboard.bindings]]
+key = "9"
+mods = "Command"
+
+[keyboard.bindings.command]
+args = ["msg", "config", "font.size=36"]
+program = "/usr/local/bin/alacritty"
