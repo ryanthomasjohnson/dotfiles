@@ -1,3 +1,8 @@
+" Include custom vim configuration if it exists
+if filereadable(expand('~/.vimrc.before'))
+  source ~/.vimrc.before
+endif
+
 " Turn syntax highlighting on
 syntax on
 colorscheme noctu
@@ -37,7 +42,7 @@ set noerrorbells
 set belloff=all
 set vb t_vb=
 " Auto-indent
-set smartindent
+set nosmartindent
 " Turn off line wrapping
 set nowrap
 " Smart case-sensitive searching
@@ -62,7 +67,7 @@ tnoremap <C-w>l <C-\><C-n><C-w>l
 " Disable <ENTER> prompt for quickfix navigation
 set shortmess=AO
 " Auto-copy to clipboard when yanking to the + register
-autocmd TextYankPost * if v:event.operator is 'y' && v:event.regname is '+' | OSCYankReg + | endif
+autocmd TextYankPost * if v:event.operator is 'y' && v:event.regname is '+' | execute 'OSCYankRegister +' | endif
 " Open splits below and to the right
 set splitbelow
 set splitright
@@ -70,15 +75,54 @@ set splitright
 set autoread
 " Auto-reload on window focus
 au FocusGained,BufEnter * :checktime
+" Alt-j/k to move lines up or down
+nnoremap <A-j> :m .+1<CR>==
+nnoremap <A-k> :m .-2<CR>==
+" Horizontal center
+nnoremap <silent> z. :<C-u>normal! zszH<CR>
+" Don't automatically resize windows when splitting or closing
+set noequalalways
+" n always searches forward, N always searches backward
+nnoremap <expr> n (v:searchforward ? 'n' : 'N')
+nnoremap <expr> N (v:searchforward ? 'N' : 'n')
 
 " Plugins
 call plug#begin()
 Plug 'sheerun/vim-polyglot'
 Plug 'ojroques/vim-oscyank'
 Plug 'neovim/nvim-lspconfig'
+Plug 'nvimtools/none-ls.nvim'
+Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'mfussenegger/nvim-dap'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'dhruvasagar/vim-zoom'
+
+" Include custom vim plugins if they exist
+if filereadable(expand('~/.vimrc.plugins'))
+  source ~/.vimrc.plugins
+endif
+
 call plug#end()
+
+" Zoom the current buffer
+nnoremap <C-w>z <Plug>(zoom-toggle)
+" nnoremap <C-w>z :if winnr('$') != 1 tab split<CR> :else q<CR> :end
 
 set shellpipe=\|\ tee
 " Command to fold lines at 80 characters
 command! -range=% Fold <line1>,<line2>!tr '\n' ' ' | sed 's/ \{2,\}/ /g' | fold -s
 command Changed :cex system('changedfiles')
+
+function! <SID>AutoMkdir() abort
+    let l:dir = expand('<afile>:p:h')
+    if !isdirectory(l:dir)
+        call mkdir(l:dir, 'p')
+    endif
+endfunction
+autocmd BufWritePre,FileWritePre,BufNewFile * call <SID>AutoMkdir()
+
+" Include custom vim configuration if it exists
+if filereadable(expand('~/.vimrc.after'))
+  source ~/.vimrc.after
+endif
