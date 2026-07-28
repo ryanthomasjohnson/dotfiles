@@ -6,7 +6,6 @@ export PATH="$HOME/.local/bin:/usr/local/bin:$PATH"
 # Include custom bash configuration
 [ -f ~/.bashrc.before ] && source ~/.bashrc.before
 
-export PATH=$HOME/.local/bin:$PATH
 # Set terminal
 # export TERM='screen-256color'
 # Turn on `ls` colors for MacOS
@@ -20,7 +19,7 @@ shopt -s histappend
 # Unlimited history file size
 export HISTFILESIZE=-1
 # Limit history entries
-export HISTSIZE=1000000
+export HISTSIZE=2000000
 # Ignore commands starting with spaces and consecutive duplicate commands
 export HISTCONTROL='ignorespace:ignoredups'
 # Append history on every command
