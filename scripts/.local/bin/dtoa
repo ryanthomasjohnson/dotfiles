@@ -1,0 +1,3 @@
+#!/bin/bash
+
+awk 'BEGIN { RS = " " } { printf "%c", $0 } END { printf "\n" }'
